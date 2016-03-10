@@ -48,9 +48,6 @@ class Schedule(WsResource):
         project = args.pop('project')
         spider = args.pop('spider')
         version = args.get('_version', '')
-        spiders = get_spider_list(project, version=version)
-        if not spider in spiders:
-            return {"status": "error", "message": "spider '%s' not found" % spider}
         args['settings'] = settings
         jobid = args.pop('jobid', uuid.uuid1().hex)
         args['_job'] = jobid
